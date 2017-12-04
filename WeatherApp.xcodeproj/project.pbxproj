@@ -13,6 +13,7 @@
 		E251335E1FCB8FCA00B79DE7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E251335C1FCB8FCA00B79DE7 /* LaunchScreen.storyboard */; };
 		E25133661FCB91C900B79DE7 /* WeatherTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25133651FCB91C900B79DE7 /* WeatherTableViewController.swift */; };
 		E25133681FCC98A600B79DE7 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25133671FCC98A600B79DE7 /* Weather.swift */; };
+		E251336A1FD60C4200B79DE7 /* ListWeatherTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25133691FD60C4200B79DE7 /* ListWeatherTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		E251335F1FCB8FCA00B79DE7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E25133651FCB91C900B79DE7 /* WeatherTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherTableViewController.swift; sourceTree = "<group>"; };
 		E25133671FCC98A600B79DE7 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
+		E25133691FD60C4200B79DE7 /* ListWeatherTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListWeatherTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 			isa = PBXGroup;
 			children = (
 				E25133531FCB8FCA00B79DE7 /* AppDelegate.swift */,
+				E25133691FD60C4200B79DE7 /* ListWeatherTableViewController.swift */,
 				E25133651FCB91C900B79DE7 /* WeatherTableViewController.swift */,
 				E25133671FCC98A600B79DE7 /* Weather.swift */,
 				E25133571FCB8FCA00B79DE7 /* Main.storyboard */,
@@ -141,6 +144,7 @@
 			files = (
 				E25133661FCB91C900B79DE7 /* WeatherTableViewController.swift in Sources */,
 				E25133681FCC98A600B79DE7 /* Weather.swift in Sources */,
+				E251336A1FD60C4200B79DE7 /* ListWeatherTableViewController.swift in Sources */,
 				E25133541FCB8FCA00B79DE7 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -9,6 +9,38 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--City List Weather-->
+        <scene sceneID="Wk1-hY-4TJ">
+            <objects>
+                <tableViewController title="City List Weather" id="B9n-9b-3Ip" customClass="ListWeatherTableViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="rfl-fx-mkg">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="drI-oX-lPc">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="drI-oX-lPc" id="g1M-XS-5iP">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="Lwk-IJ-4vi" kind="show" trigger="accessoryAction" id="BUi-Xm-oo6"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="B9n-9b-3Ip" id="yib-hy-u09"/>
+                            <outlet property="delegate" destination="B9n-9b-3Ip" id="Lag-pX-0B5"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="City List Weather" id="GDR-zC-r83"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MPa-ep-2Zq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="561" y="157"/>
+        </scene>
         <!--City Weather-->
         <scene sceneID="Le3-lg-1qk">
             <objects>
@@ -61,7 +93,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cIz-Au-Qbw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="613.60000000000002" y="156.97151424287858"/>
+            <point key="canvasLocation" x="1311" y="157"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="qAp-L5-ji4">
@@ -74,7 +106,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="Lwk-IJ-4vi" kind="relationship" relationship="rootViewController" id="cJf-Ln-gZx"/>
+                        <segue destination="B9n-9b-3Ip" kind="relationship" relationship="rootViewController" id="4mH-z6-puA"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bmq-3o-f5c" userLabel="First Responder" sceneMemberID="firstResponder"/>
