@@ -7,18 +7,47 @@
 //
 
 import UIKit
+import CoreLocation
 
-class ListWeatherTableViewController: UITableViewController {
-
+class ListWeatherTableViewController: UITableViewController, UISearchBarDelegate {
+    
+    @IBOutlet weak var searchBar: UISearchBar!
+    var allCity = [Weather]()
+    var cityName = [String]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        searchBar.delegate = self
+        
     }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        if let locationString = searchBar.text, !locationString.isEmpty {
+            updateWeatherForLocation(location: locationString)
+        }
+    }
+    
+    func updateWeatherForLocation (location:String) {
+        cityName.append(location)
+        CLGeocoder().geocodeAddressString(location) { (placemarks:[CLPlacemark]?, error:Error?) in
+            if error == nil {
+                if let location = placemarks?.first?.location {
+                    Weather.todayWeather(withLocation: location.coordinate, completion: {
+                        (results: Weather?) in
+                        if let weatherData = results {
+                            self.allCity.append(weatherData)
+                        }
+                        DispatchQueue.main.async {
+                            self.tableView.reloadData()
+                        }
+                    })
+                }
+            }
+        }
+    }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -29,23 +58,31 @@ class ListWeatherTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return allCity.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return 1
     }
 
-    /*
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        //        let dateFormatter = DateFormatter()
+        //        dateFormatter.dateFormat = "MMMM dd, yyyy"
+        return allCity[section].dateAndTime
+    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
 
-        // Configure the cell...
-
+        let weatherObject = allCity[indexPath.section]
+        let name = cityName[indexPath.section]
+        cell.textLabel?.text = name
+        cell.detailTextLabel?.text = "\(weatherObject.status)" + "  current \(Int(weatherObject.curTemp)) °F"
+//        cell.imageView?.image = UIImage(named: weatherObject.icon)
         return cell
     }
-    */
+ 
 
     /*
     // Override to support conditional editing of the table view.
