@@ -48,7 +48,7 @@
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
-                                    <segue destination="Lwk-IJ-4vi" kind="show" trigger="accessoryAction" id="BUi-Xm-oo6"/>
+                                    <segue destination="Lwk-IJ-4vi" kind="show" identifier="segue" trigger="accessoryAction" id="BUi-Xm-oo6"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -74,14 +74,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Palo Alto" id="32u-g3-oPg">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <textInputTraits key="textInputTraits"/>
-                        </searchBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="e46-ie-Isp" detailTextLabel="6af-kV-mDa" rowHeight="75" style="IBUITableViewCellStyleSubtitle" id="Gcy-pF-qgr">
-                                <rect key="frame" x="0.0" y="72" width="375" height="75"/>
+                                <rect key="frame" x="0.0" y="28" width="375" height="75"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Gcy-pF-qgr" id="Exc-y3-lHz">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="74.5"/>
@@ -112,9 +107,6 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="City Weather" id="JEs-FG-Zrc"/>
-                    <connections>
-                        <outlet property="searchBar" destination="32u-g3-oPg" id="J0Z-ad-6X5"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cIz-Au-Qbw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

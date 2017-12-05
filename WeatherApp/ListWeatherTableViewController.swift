@@ -9,17 +9,17 @@
 import UIKit
 import CoreLocation
 
+var allCity = [Weather]()
+var cityName = [String]()
+var clickIndex = 0
+
 class ListWeatherTableViewController: UITableViewController, UISearchBarDelegate {
     
     @IBOutlet weak var searchBar: UISearchBar!
-    var allCity = [Weather]()
-    var cityName = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         searchBar.delegate = self
-        
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -37,7 +37,7 @@ class ListWeatherTableViewController: UITableViewController, UISearchBarDelegate
                     Weather.todayWeather(withLocation: location.coordinate, completion: {
                         (results: Weather?) in
                         if let weatherData = results {
-                            self.allCity.append(weatherData)
+                            allCity.append(weatherData)
                         }
                         DispatchQueue.main.async {
                             self.tableView.reloadData()
@@ -83,7 +83,11 @@ class ListWeatherTableViewController: UITableViewController, UISearchBarDelegate
         return cell
     }
  
-
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        clickIndex = indexPath.section
+        performSegue(withIdentifier: "segue", sender: self)
+    }
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -128,5 +132,4 @@ class ListWeatherTableViewController: UITableViewController, UISearchBarDelegate
         // Pass the selected object to the new view controller.
     }
     */
-
 }
