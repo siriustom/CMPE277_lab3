@@ -25,7 +25,7 @@ struct Weather {
         self.maxTemp = 0.0
         self.dateAndTime = ""
     }
-    init(json:[String:Any]) throws {
+    init(json:[String:Any], location: CLLocationCoordinate2D) throws {
         //status and icon init
         if let weather = json["weather"] as? [[String: Any]] {
             guard let description = weather[0]["description"] as? String else {
@@ -57,9 +57,7 @@ struct Weather {
             throw SerializationError.missing("main is missing")
         }
         
-        if let dtx = json["dt_txt"] as? String {
-            self.dateAndTime = dtx
-        } else if let dt = json["dt"] as? Int {
+        if let dt = json["dt"] as? Int {
             self.dateAndTime = String(dt)
         } else {
             throw SerializationError.missing("dateAndTime is missing")
@@ -78,8 +76,13 @@ struct Weather {
             if let data = dataCur {
                 do {
                     if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
-                        if let weather = try? Weather(json: json) {
-                            completion(weather)
+                        if var weather = try? Weather(json: json, location: location) {
+                            TimeStamp.getLocalTime(location: location, timestamp: Int(weather.dateAndTime)!, completion:{(results:String?) in
+                                if let s = results {
+                                    weather.dateAndTime = s
+                                    completion(weather)
+                                }
+                            })
                         } else {
                             print("weather has not been initiated")
                         }
@@ -104,8 +107,14 @@ struct Weather {
                     if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
                         if let list = json["list"] as? [[String: Any]] {
                             for l in list {
-                                if let forecastPart = try? Weather(json: l) {
-                                    forecastArray.append(forecastPart)
+                                if var forecastPart = try? Weather(json: l, location: location) {
+                                    TimeStamp.getLocalTime(location: location, timestamp: Int(forecastPart.dateAndTime)!, completion:{(results:String?) in
+                                        if let s = results {
+                                            forecastPart.dateAndTime = s
+                                            forecastArray.append(forecastPart)
+                                            completion(forecastArray)
+                                        }
+                                    })
                                 } else {
                                     print("forecast has not been initiated")
                                 }
@@ -115,7 +124,6 @@ struct Weather {
                 } catch {
                     print(error.localizedDescription)
                 }
-                completion(forecastArray)
             }
         }
         taskForecast.resume()

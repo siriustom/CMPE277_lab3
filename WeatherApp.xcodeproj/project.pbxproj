@@ -14,6 +14,7 @@
 		E25133661FCB91C900B79DE7 /* WeatherTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25133651FCB91C900B79DE7 /* WeatherTableViewController.swift */; };
 		E25133681FCC98A600B79DE7 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25133671FCC98A600B79DE7 /* Weather.swift */; };
 		E251336A1FD60C4200B79DE7 /* ListWeatherTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25133691FD60C4200B79DE7 /* ListWeatherTableViewController.swift */; };
+		E251336C1FD688CB00B79DE7 /* TimeStamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E251336B1FD688CB00B79DE7 /* TimeStamp.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		E25133651FCB91C900B79DE7 /* WeatherTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherTableViewController.swift; sourceTree = "<group>"; };
 		E25133671FCC98A600B79DE7 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		E25133691FD60C4200B79DE7 /* ListWeatherTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListWeatherTableViewController.swift; sourceTree = "<group>"; };
+		E251336B1FD688CB00B79DE7 /* TimeStamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeStamp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 				E25133691FD60C4200B79DE7 /* ListWeatherTableViewController.swift */,
 				E25133651FCB91C900B79DE7 /* WeatherTableViewController.swift */,
 				E25133671FCC98A600B79DE7 /* Weather.swift */,
+				E251336B1FD688CB00B79DE7 /* TimeStamp.swift */,
 				E25133571FCB8FCA00B79DE7 /* Main.storyboard */,
 				E251335A1FCB8FCA00B79DE7 /* Assets.xcassets */,
 				E251335C1FCB8FCA00B79DE7 /* LaunchScreen.storyboard */,
@@ -143,6 +146,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E25133661FCB91C900B79DE7 /* WeatherTableViewController.swift in Sources */,
+				E251336C1FD688CB00B79DE7 /* TimeStamp.swift in Sources */,
 				E25133681FCC98A600B79DE7 /* Weather.swift in Sources */,
 				E251336A1FD60C4200B79DE7 /* ListWeatherTableViewController.swift in Sources */,
 				E25133541FCB8FCA00B79DE7 /* AppDelegate.swift in Sources */,

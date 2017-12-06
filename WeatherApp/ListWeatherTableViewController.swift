@@ -30,17 +30,17 @@ class ListWeatherTableViewController: UITableViewController, UISearchBarDelegate
     }
     
     func updateWeatherForLocation (location:String) {
-        cityName.append(location)
         CLGeocoder().geocodeAddressString(location) { (placemarks:[CLPlacemark]?, error:Error?) in
             if error == nil {
+                cityName.append((placemarks?.first?.name)!)
                 if let location = placemarks?.first?.location {
                     Weather.todayWeather(withLocation: location.coordinate, completion: {
                         (results: Weather?) in
                         if let weatherData = results {
                             allCity.append(weatherData)
-                        }
-                        DispatchQueue.main.async {
-                            self.tableView.reloadData()
+                            DispatchQueue.main.async {
+                                self.tableView.reloadData()
+                            }
                         }
                     })
                 }
@@ -78,7 +78,7 @@ class ListWeatherTableViewController: UITableViewController, UISearchBarDelegate
         let weatherObject = allCity[indexPath.section]
         let name = cityName[indexPath.section]
         cell.textLabel?.text = name
-        cell.detailTextLabel?.text = "\(weatherObject.status)" + "  current \(Int(weatherObject.curTemp)) °F"
+        cell.detailTextLabel?.text = "\(weatherObject.status)" + "  current temperature \(Int(weatherObject.curTemp)) °F"
 //        cell.imageView?.image = UIImage(named: weatherObject.icon)
         return cell
     }

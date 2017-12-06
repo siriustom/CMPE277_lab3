@@ -2,10 +2,12 @@
 import UIKit
 import CoreLocation
 
+var allData = [Weather]()
+
 class WeatherTableViewController: UITableViewController {
     
+    @IBOutlet weak var cityLabel: UILabel!
     
-    var allData = [Weather]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -13,20 +15,24 @@ class WeatherTableViewController: UITableViewController {
     }
     
     func updateWeatherForLocation (location:String) {
+        cityLabel.text = location
         CLGeocoder().geocodeAddressString(location) { (placemarks:[CLPlacemark]?, error:Error?) in
             if error == nil {
                 if let location = placemarks?.first?.location {
                     Weather.todayWeather(withLocation: location.coordinate, completion: {
                         (results: Weather?) in
                         if let weatherData = results {
-                            self.allData.append(weatherData)
+                            allData.append(weatherData)
+                        }
+                        DispatchQueue.main.async {
+                            self.tableView.reloadData()
                         }
                     })
                     Weather.forecast(withLocation: location.coordinate, completion: {
                         (results: [Weather]?) in
                         if let weatherData = results {
                             for w in weatherData {
-                                self.allData.append(w)
+                                allData.append(w)
                             }
                         }
                         DispatchQueue.main.async {
